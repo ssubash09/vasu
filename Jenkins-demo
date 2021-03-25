@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM') {
+            steps {
+               git 'https://github.com/awspandian/vasu.git'
+
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "mvn clean"
+                sh "mvn install"
+            }
+        }
+                stage('Deploy') {
+            steps {
+               
+                sh 'cp -rp "/var/lib/jenkins/workspace/demo pipeline/target/sweet.war" "/opt/demo-folder"'
+            }
+        }
+    }
+}
