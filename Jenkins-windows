@@ -1,0 +1,21 @@
+pipeline {
+agent any
+stages{
+stage ('scm'){
+steps {
+git 'https://github.com/awspandian/vasu.git'
+}
+}
+stage ('build'){
+steps {
+bat label: '', script: 'mvn clean'
+bat label: '', script: 'mvn install'
+}
+}
+stage ('deployment'){
+steps {
+bat label: '', script: 'xcopy /y "C:\\Windows\\System32\\config\\systemprofile\\.jenkins\\workspace\\demo-pipeline\\target\\sweet.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps"'
+}
+}
+}
+}
