@@ -1,0 +1,15 @@
+pipeline {
+agent any
+stages {
+stage ('SCM'){
+steps {git 'https://github.com/awspandian/Maven-Demo.git'}
+			}
+stage ('Build'){
+steps {sh 'mvn clean'
+	   sh 'mvn install'}
+			}
+stage ('Deploy'){
+steps {deploy adapters: [tomcat9(credentialsId: 'webserver', path: '', url: 'http://52.90.214.212:9090/')], contextPath: 'demo-pipline', war: '**/*.war'}
+			}
+}
+}
