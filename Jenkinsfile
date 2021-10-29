@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("dockerpandian/batch12-30")
+                    app = docker.build("dockerpandian/batch-6pm")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
