@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("dockerpandian/batch-6pm")
+                    app = docker.build("subash1999/deockerdeploy")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
