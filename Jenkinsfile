@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("subash1999/deockerdeploy")
+                    app = docker.build("subash1999/docker12")
                     app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
